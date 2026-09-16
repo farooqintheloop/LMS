@@ -1,0 +1,152 @@
+name: lms_app
+description: AM LMS - A comprehensive Learning Management System mobile application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  provider: ^6.1.1
+  riverpod: ^2.4.9
+  flutter_riverpod: ^2.4.9
+
+  # Navigation
+  go_router: ^12.1.3
+
+  # HTTP & API
+  dio: ^5.4.0
+  json_annotation: ^4.8.1
+
+  # Local Storage
+  shared_preferences: ^2.2.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_secure_storage: ^9.0.0
+  path_provider: ^2.1.1
+
+  # Authentication & Security
+  jwt_decoder: ^2.0.1
+  crypto: ^3.0.3
+  local_auth: ^2.1.6
+  device_info_plus: ^9.1.1
+
+  # Video Player
+  video_player: ^2.8.1
+
+  # UI Components
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+  shimmer: ^3.0.0
+  lottie: ^2.7.0
+  flutter_animate: ^4.3.0
+  animations: ^2.0.8
+  fl_chart: ^0.66.0
+
+  # Form & Validation
+  # flutter_form_builder: ^9.1.1
+  # form_builder_validators: ^11.2.0
+
+  # Date & Time
+  intl: ^0.19.0
+  timeago: ^3.6.0
+
+  # File handling
+  file_picker: ^8.0.5
+  path: ^1.8.3
+  mime: ^1.0.4
+  open_file: ^3.3.2
+  
+  # File Download
+  archive: ^3.4.10
+
+  # Notifications
+  # firebase_messaging: ^14.7.9
+  # firebase_core: ^2.24.2
+  #flutter_local_notifications: ^17.2.0
+  #awesome_notifications: ^0.10.0
+  # WebSocket
+  web_socket_channel: ^2.4.0
+  socket_io_client: ^2.0.3+1
+
+  # Permissions
+  permission_handler: ^11.1.0
+
+  # Connectivity
+  connectivity_plus: ^5.0.2
+  internet_connection_checker: ^1.0.0+1
+
+  # Live Streaming
+  webview_flutter: ^4.4.2
+
+  # PDF & Documents (using WebView)
+  # flutter_pdfview: ^1.3.2
+
+  # Utils
+  logger: ^2.0.2+1
+  uuid: ^4.2.1
+  url_launcher: ^6.2.2
+  share_plus: ^7.2.1
+  package_info_plus: ^4.2.0
+
+  # Icons & Fonts
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.1.0
+  font_awesome_flutter: ^10.6.0
+
+  # Platform specific
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code Generation
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+  hive_generator: ^2.0.1
+
+  # Linting
+  flutter_lints: ^3.0.1
+
+  # Testing
+  mockito: ^5.4.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    # - assets/animations/
+    # - assets/fonts/
+
+  # fonts:
+    # - family: CustomIcons
+      # fonts:
+        # - asset: assets/fonts/custom_icons.ttf
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/icons/app_icon.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#E3F2FD"
+  image: assets/images/splash_logo.png
+  color_dark: "#121212"
+  image_dark: assets/images/splash_logo.png
+  android_12:
+    image: assets/images/splash_logo.png
+    icon_background_color: "#E3F2FD"
+  web: false
+
+

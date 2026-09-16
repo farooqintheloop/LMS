@@ -1,0 +1,116 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+// Load keystore properties for release builds
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace "com.amlms.app"
+    compileSdk flutter.compileSdkVersion
+    // Pin requested NDK version to avoid configuration issues
+    ndkVersion "27.1.12297006"
+    // Disable NDK auto-resolution to avoid build issues
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.amlms.app"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        
+        // Enable multidex for large apps
+        multiDexEnabled true
+        
+        // Add network security config
+        // networkSecurityConfig = file("src/main/res/xml/network_security_config.xml")
+    }
+
+    signingConfigs {
+        debug {
+            // Debug signing configuration
+        }
+        release {
+            if (keystoreProperties['keyAlias'] != null) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Build configuration for production
+            buildConfigField "String", "API_BASE_URL", '"https://lms-api.muheet228.workers.dev/api"'
+            buildConfigField "boolean", "DEBUG_MODE", "false"
+        }
+        
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            buildConfigField "String", "API_BASE_URL", '"https://lms-api.muheet228.workers.dev/api"'
+            buildConfigField "boolean", "DEBUG_MODE", "true"
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10"
+    implementation 'androidx.multidex:multidex:2.0.1'
+    
+    // Add additional dependencies for video playback and file handling
+    implementation 'androidx.media:media:1.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+}

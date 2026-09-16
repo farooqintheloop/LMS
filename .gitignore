@@ -1,0 +1,79 @@
+# ============================================================
+# ENVIRONMENT & SECRETS
+# ============================================================
+
+.env
+*.env
+production.env
+env.txt
+.wrangler/
+
+# ============================================================
+# DEPENDENCIES
+# ============================================================
+
+node_modules/
+web/node_modules/
+backend/venv/
+backend/.venv/
+
+# ============================================================
+# BUILD ARTIFACTS
+# ============================================================
+
+# Flutter
+frontend/frontend/.dart_tool/
+frontend/frontend/.pub-cache/
+frontend/frontend/build/
+frontend/frontend/android/key.properties
+frontend/frontend/android/*.jks
+
+# Signing / certificates
+*.keystore
+*.pem
+*.p12
+
+# React / Web
+web/dist/
+
+# ============================================================
+# DATABASE & LOGS
+# ============================================================
+
+*.sqlite3
+backend/logs/
+backend/media/
+backend/chunking-examples/
+backend/package.json
+backend/wrangler.toml
+frontend/frontend/build_apk.bat
+frontend/frontend/build_apk.py
+frontend/frontend/build_production_apk.py
+frontend/frontend/build_windows_desktop.bat
+frontend/frontend/linux/
+frontend/frontend/macos/
+frontend/frontend/windows/
+web/package-lock.json
+web/package.json
+backend/requirements_cloudflare.txt
+frontend/frontend/wrangler.toml
+frontend/frontend/.metadata
+web/README.md
+web/public/vite.svg
+web/src/assets/react.svg
+frontend/frontend/test/widget_test.dart
+frontend/frontend/pubspec.lock
+frontend/frontend/_routes.json
+frontend/frontend/web/
+
+# ============================================================
+# PYTHON / CACHE / OS
+# ============================================================
+
+__pycache__/
+*.pyc
+
+.vscode/
+.idea/
+.DS_Store
+**/.dart_tool/
